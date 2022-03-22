@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div><span id="cart-items" class="_dashpay-cart-count tester"></span> <a href='cart.html'>Cart items</a></div>
+
+    <div id="cart"></div>
+    
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.5.2/rxjs.umd.js'></script> 
+    <script src='http://selljs.test/connector/cyclobold-95c07697-ed25-4e05-ac48-b203ed5f779a/-/95d1ce4c-f6e0-48df-84d8-b61cf5912431/-/DPS_861881167622f8cda81a7c622f8cda81a7e861881167622f8cda81a7c622f8cda81a7e'></script>
+
+        <script>
+
+            dashpay_.getCartItems().then((data) =>{
+                console.log(data);
+            })
+        
+           
+
+
+        </script>
+
+</body>
+</html>

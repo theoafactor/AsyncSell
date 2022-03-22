@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div><span id="cart-items" class="_dashpay-cart-count"></span> <a href='cart.html'>Cart items</a></div>
+
+    <div id="products"></div>
+    
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.5.2/rxjs.umd.js'></script> 
+    <script src='http://selljs.test/connector/cyclobold-95c07697-ed25-4e05-ac48-b203ed5f779a/-/95d1ce4c-f6e0-48df-84d8-b61cf5912431/-/DPS_861881167622f8cda81a7c622f8cda81a7e861881167622f8cda81a7c622f8cda81a7e'></script>
+
+        <script>
+
+            //console.log(dashpay_);
+         
+        dashpay_.getAllProductsWithCheckout().then((productsObject) =>{
+
+            //console.log(productsObject.data);
+
+
+            productsDiv = "";
+
+            products = productsObject.data.products;
+
+            //console.log(products);
+
+            products.forEach((product) =>{
+
+                console.log(product);
+                productsDiv += `<div style='margin-top: 20px;'>
+                                    <div><img src="${product.product.product_cover_image}" style='width: 200px;'></div>
+                                    <div>${product.product.product_name}</div>
+                                    
+                                </div>`;
+
+                if(product.is_added_to_cart == true){
+                    productsDiv += `<div><button onclick="${product.removeFromCartAction}">Remove from Cart</button></div>`
+                }else{
+                    productsDiv += `<div><button onclick="${product.addToCartAction}">Add To Cart</button></div>`;
+                }
+                
+                //check if product is added to cart.
+                //console.log(product.is_added_to_cart);
+
+
+            })
+
+            document.querySelector("#products").innerHTML = productsDiv;
+
+        })
+
+        
+
+
+        //show the cart basket button
+        document.querySelector("#cart-items").innerHTML = dashpay_.showCartBasketInfo();
+
+
+    </script>
+
+</body>
+</html>
